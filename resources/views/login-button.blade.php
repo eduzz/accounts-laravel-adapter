@@ -15,5 +15,5 @@
         }
     </script>
 
-    <a id="eduzz-account-button" href="#" onclick="loginEduzzAccount()">{{ $slot ?? 'Login com Eduzz Account' }}</a>
+    <a id="eduzz-account-button" href="#" onclick="loginEduzzAccount()">{{ $slot }}</a>
 @endif
