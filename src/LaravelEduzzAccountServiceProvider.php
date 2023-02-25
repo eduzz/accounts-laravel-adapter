@@ -17,7 +17,7 @@ class LaravelEduzzAccountServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-eduzz-account')
             ->hasConfigFile()
-            ->hasViewsComponent('eduzz-account', Button::class)
+            ->hasViewComponent('eduzz-account', Button::class)
             ->hasRoute('web')
             ->hasMigration('add_eduzz_account_id_column_to_users');
     }
