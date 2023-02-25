@@ -1,12 +1,12 @@
 {
-    "name": "eduzz/laravel-eduzz-account",
+    "name": "eduzzlabs/laravel-eduzz-account",
     "description": "Pacote de integração do Laravel com o Eduzz Account.",
     "keywords": [
         "eduzz",
         "laravel",
         "laravel-eduzz-account"
     ],
-    "homepage": "https://github.com/eduzz/laravel-eduzz-account",
+    "homepage": "https://github.com/eduzzlabs/laravel-eduzz-account",
     "license": "MIT",
     "authors": [
         {
