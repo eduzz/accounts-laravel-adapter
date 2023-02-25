@@ -22,10 +22,10 @@ Você deve publicar as configurações com:
 php artisan vendor:publish --tag="eduzz-account-config"
 ```
 
-Também publique os estilos css do botão:
+Também importe os estilos css do botão em app.css:
 
-```bash
-php artisan vendor:publish --tag=eduzz-account-assets
+```css
+@import "/vendor/eduzzlabs/laravel-eduzz-account/resources/dist/button.css";
 ```
 
 Opcionalmente, você pode publicar as view com:
