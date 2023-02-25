@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @see \VendorName\Skeleton\Skeleton
  */
-class Skeleton extends Facade
+class LaravelEduzzAccount extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \VendorName\Skeleton\Skeleton::class;
+        return \Eduzz\LaravelEduzzAccount\LaravelEduzzAccount::class;
     }
 }

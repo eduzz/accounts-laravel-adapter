@@ -1,24 +1,25 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "eduzz/laravel-eduzz-account",
+    "description": "Pacote de integração do Laravel com o Eduzz Account.",
     "keywords": [
-        ":vendor_name",
+        "eduzz",
         "laravel",
-        ":package_slug"
+        "laravel-eduzz-account"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/eduzz/laravel-eduzz-account",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Dan Palmieri",
+            "email": "contato@danpalmieri.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.1",
         "spatie/laravel-package-tools": "^1.14.0",
-        "illuminate/contracts": "^10.0"
+        "illuminate/contracts": "^10.0",
+        "doctrine/dbal": "^3.6.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -34,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Eduzz\\LaravelEduzzAccount\\": "src",
+            "Eduzz\\LaravelEduzzAccount\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Eduzz\\LaravelEduzzAccount\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -60,13 +61,13 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Eduzz\\LaravelEduzzAccount\\LaravelEduzzAccountServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelEduzzAccount": "Eduzz\\LaravelEduzzAccount\\Facades\\LaravelEduzzAccount"
             }
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

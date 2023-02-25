@@ -1,12 +1,11 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Eduzz\LaravelEduzzAccount;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class LaravelEduzzAccountServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +15,11 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('laravel-eduzz-account')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasViewsComponents('eduzz-account', Button::class)
+            ->hasAssets()
+            ->hasRoute('web')
+            ->hasMigration('add_eduzz_account_id_column_to_users');
     }
 }
