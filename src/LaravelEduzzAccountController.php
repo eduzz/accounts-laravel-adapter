@@ -12,8 +12,8 @@ class LaravelEduzzAccountController extends BaseController
     public function __invoke(Request $request, $token)
     {
         $url = app()->environment('local')
-            ? 'https://accounts-api.qa.devzz.ninja/validate'
-            : 'https://accounts-api.eduzz.com/validate';
+            ? config('eduzz-account.production.api.url')
+            : config('eduzz-account.testing.api.url')
 
         $request = Http::asJson()->post($url, [
             'partner' => config('eduzz-account.id'),

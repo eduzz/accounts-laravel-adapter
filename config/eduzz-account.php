@@ -47,4 +47,10 @@ return [
      * Set the Eduzz Account Controller class.
      */
     'route.controller' => \EduzzLabs\LaravelEduzzAccount\LaravelEduzzAccountController::class,
+
+    /**
+     * The Eduzz Account url API.
+     */
+    'production.api.url' => env('EDUZZ_ACCOUNT_API_URL'),
+    'testing.api.url' => env('EDUZZ_ACCOUNT_TESTING_API_URL'),
 ];
