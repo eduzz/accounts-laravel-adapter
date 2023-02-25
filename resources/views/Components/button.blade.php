@@ -8,7 +8,7 @@
             @if(app()->environment('local')) env: 'homolog' @endif
         })
         .subscribe((data) => {
-            window.location.href = "{{ config('eduzz-account.callback.url') }}" + data + "?{!! http_build_query($_GET) !!}"
+            document.getElementById('eduzz-account-button').setAttribute('href', "{{ config('eduzz-account.callback.url') }}" + data + "?{!! http_build_query($_GET) !!}");
         });
 </script>
 

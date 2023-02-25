@@ -42,4 +42,9 @@ return [
      * Define the button color.
      */
     'button.color' => '#000',
+
+    /**
+     * Set the Eduzz Account Controller class.
+     */
+    'route.controller' => \Eduzz\LaravelEduzzAccount\LaravelEduzzAccountController::class,
 ];
