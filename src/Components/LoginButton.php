@@ -21,6 +21,6 @@ class LoginButton extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('laravel-eduzz-account::login-button');
+        return view('eduzz-account::login-button');
     }
 }
