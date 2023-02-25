@@ -10,7 +10,7 @@ return [
     /**
      * Url to get back the results of the login attempt.
      */
-    'callbackRoute' => env('EDUZZ_ACCOUNT_POSTBACK_URL', '/eduzzlabs/callback'),
+    'callbackRoute' => env('EDUZZ_ACCOUNT_CALLBACK_URL', '/eduzzlabs/callback'),
 
     /**
      * Eduzz credentials of this app.

@@ -1,4 +1,4 @@
-@if(config('eduzz-account.enabled'))
+@if(config('eduzz-account.enabled') === true)
     <script src="https://cdn.eduzzcdn.com/accounts/accounts.js"></script>
     <script>
         function loginEduzzAccount() {
