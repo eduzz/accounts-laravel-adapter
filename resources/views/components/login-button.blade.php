@@ -13,5 +13,5 @@
             });
     </script>
 
-    <a id="eduzz-account-button">Login com Eduzz Account</a>
+    <a id="eduzz-account-button">{{ $slot ?? 'Login com Eduzz Account' }}</a>
 @endif
