@@ -46,5 +46,5 @@ return [
     /**
      * Set the Eduzz Account Controller class.
      */
-    'route.controller' => \Eduzz\LaravelEduzzAccount\LaravelEduzzAccountController::class,
+    'route.controller' => \EduzzLabs\LaravelEduzzAccount\LaravelEduzzAccountController::class,
 ];

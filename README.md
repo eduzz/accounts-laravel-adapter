@@ -1,13 +1,12 @@
 # Laravel Eduzz Account
----
-Módulo para utilizar o Eduzz Account com uma aplicação Laravel v8+.
+Módulo para utilizar o Eduzz Account com uma aplicação Laravel que utiliza o Jetstream.
 
 ## Instalação
 
 Você pode instalar o pacote via composer:
 
 ```bash
-composer require eduzz/laravel-eduzz-account
+composer require eduzzlabs/laravel-eduzz-account
 ```
 
 Você deve publicar e executar as migrations com:
@@ -43,4 +42,4 @@ composer test
 ```
 ## Licença
 
-The MIT License (MIT).
+MIT License (MIT).

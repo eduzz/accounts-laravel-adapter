@@ -11,6 +11,6 @@ class LaravelEduzzAccount extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Eduzz\LaravelEduzzAccount\LaravelEduzzAccount::class;
+        return \EduzzLabs\LaravelEduzzAccount\LaravelEduzzAccount::class;
     }
 }

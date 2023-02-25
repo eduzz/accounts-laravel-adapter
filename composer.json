@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Eduzz\\LaravelEduzzAccount\\": "src",
-            "Eduzz\\LaravelEduzzAccount\\Database\\Factories\\": "database/factories"
+            "EduzzLabs\\LaravelEduzzAccount\\": "src",
+            "EduzzLabs\\LaravelEduzzAccount\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Eduzz\\LaravelEduzzAccount\\Tests\\": "tests"
+            "EduzzLabs\\LaravelEduzzAccount\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -61,10 +61,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Eduzz\\LaravelEduzzAccount\\LaravelEduzzAccountServiceProvider"
+                "EduzzLabs\\LaravelEduzzAccount\\LaravelEduzzAccountServiceProvider"
             ],
             "aliases": {
-                "LaravelEduzzAccount": "Eduzz\\LaravelEduzzAccount\\Facades\\LaravelEduzzAccount"
+                "LaravelEduzzAccount": "EduzzLabs\\LaravelEduzzAccount\\Facades\\LaravelEduzzAccount"
             }
         }
     },

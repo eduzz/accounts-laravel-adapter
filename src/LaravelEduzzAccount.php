@@ -1,6 +1,6 @@
 <?php
 
-namespace Eduzz\LaravelEduzzAccount;
+namespace EduzzLabs\LaravelEduzzAccount;
 
 class LaravelEduzzAccount
 {
