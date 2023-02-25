@@ -13,7 +13,7 @@ class LaravelEduzzAccountController extends BaseController
     {
         $url = app()->environment('local')
             ? config('eduzz-account.productionApiUrl')
-            : config('eduzz-account.testingApiUrl')
+            : config('eduzz-account.testingApiUrl');
 
         $request = Http::asJson()->post($url, [
             'partner' => config('eduzz-account.id'),
