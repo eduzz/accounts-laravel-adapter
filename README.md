@@ -16,10 +16,16 @@ php artisan vendor:publish --tag="eduzz-account-migrations"
 php artisan migrate
 ```
 
-Você pode publicar as configurações com:
+Você deve publicar as configurações com:
 
 ```bash
 php artisan vendor:publish --tag="eduzz-account-config"
+```
+
+Também publique os estilos css do botão:
+
+```bash
+php artisan vendor:publish --tag=eduzz-account-assets
 ```
 
 Opcionalmente, você pode publicar as view com:

@@ -1,0 +1,3 @@
+#eduzz-account-button{
+    @apply border p-3 rounded text-center block bg-white hover:bg-gray-100;
+}
