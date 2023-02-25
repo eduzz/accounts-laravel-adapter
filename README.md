@@ -12,20 +12,20 @@ composer require eduzzlabs/laravel-eduzz-account
 Você deve publicar e executar as migrations com:
 
 ```bash
-php artisan vendor:publish --tag="laravel-eduzz-account-migrations"
+php artisan vendor:publish --tag="eduzz-account-migrations"
 php artisan migrate
 ```
 
 Você pode publicar as configurações com:
 
 ```bash
-php artisan vendor:publish --tag="laravel-eduzz-account-config"
+php artisan vendor:publish --tag="eduzz-account-config"
 ```
 
 Opcionalmente, você pode publicar as view com:
 
 ```bash
-php artisan vendor:publish --tag="laravel-eduzz-account-views"
+php artisan vendor:publish --tag="eduzz-account-views"
 ```
 
 ## Uso

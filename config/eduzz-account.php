@@ -10,7 +10,7 @@ return [
     /**
      * Url to get back the results of the login attempt.
      */
-    'callback.route' => env('EDUZZ_ACCOUNT_POSTBACK_URL', '/eduzzlabs\postback'),
+    'callbackRoute' => env('EDUZZ_ACCOUNT_POSTBACK_URL', '/eduzzlabs/callback'),
 
     /**
      * Eduzz credentials of this app.
@@ -26,12 +26,12 @@ return [
     /**
      * The column name to store the Eduzz Account ID.
      */
-    'table.column' => 'eduzz_account_id',
+    'tableColumn' => 'eduzz_account_id',
 
     /**
      * Define if the app use Teams.
      */
-    'has_teams' => true,
+    'hasTeams' => true,
 
     /**
      * The app logo to show in the login page.
@@ -41,21 +41,21 @@ return [
     /**
      * The background image to show in the login page.
      */
-    'background.image' => 'https://bellamais.correiodopovo.com.br/image/policy:1.401858:1582807039/Quem-precisa-de-etica-no-marketing-digital.jpg?f=2x1&$p$f=cd658fa&w=2400&$w=d2ad2f2',
+    'backgroundImage' => 'https://bellamais.correiodopovo.com.br/image/policy:1.401858:1582807039/Quem-precisa-de-etica-no-marketing-digital.jpg?f=2x1&$p$f=cd658fa&w=2400&$w=d2ad2f2',
 
     /**
      * Define the button color.
      */
-    'button.color' => '#000',
+    'buttonColor' => '#000',
 
     /**
      * Set the Eduzz Account Controller class.
      */
-    'route.controller' => \EduzzLabs\LaravelEduzzAccount\LaravelEduzzAccountController::class,
+    'routeController' => \EduzzLabs\LaravelEduzzAccount\LaravelEduzzAccountController::class,
 
     /**
      * The Eduzz Account url API.
      */
-    'production.api.url' => env('EDUZZ_ACCOUNT_API_URL'),
-    'testing.api.url' => env('EDUZZ_ACCOUNT_TESTING_API_URL'),
+    'productionApiUrl' => env('EDUZZ_ACCOUNT_API_URL'),
+    'testingApiUrl' => env('EDUZZ_ACCOUNT_TESTING_API_URL'),
 ];

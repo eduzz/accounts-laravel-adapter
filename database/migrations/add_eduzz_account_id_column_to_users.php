@@ -10,14 +10,14 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('password')->nullable()->change();
-            $table->string(config('eduzz-account.table.column'))->unique()->index()->nullable();
+            $table->string(config('eduzz-account.tableColumn'))->unique()->index()->nullable();
         });
     }
 
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(config('eduzz-account.table.column'));
+            $table->dropColumn(config('eduzz-account.tableColumn'));
         });
     }
 };

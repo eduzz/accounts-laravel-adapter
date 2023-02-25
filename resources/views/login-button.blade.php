@@ -3,9 +3,9 @@
     <script>
         function loginEduzzAccount() {
             window.Eduzz.Accounts.login("{{ config('eduzz-account.id') }}", {
-                    logo: "{{ config('eduzz-account.id') }}",
-                    bg: "{{ config('eduzz-account.background.image') }}",
-                    btnColor: "{{ config('eduzz-account.button.color') }}",
+                    logo: "{{ config('eduzz-account.logo') }}",
+                    bg: "{{ config('eduzz-account.backgroundImage') }}",
+                    btnColor: "{{ config('eduzz-account.buttonColor') }}",
                     dark: false,
                     @if(app()->environment('local')) env: 'homolog' @endif
                 })
@@ -15,5 +15,5 @@
         }
     </script>
 
-    <a id="eduzz-account-button" onclick="loginEduzzAccount()">{{ $slot ?? 'Login com Eduzz Account' }}</a>
+    <a id="eduzz-account-button" href="#" onclick="loginEduzzAccount()">{{ $slot ?? 'Login com Eduzz Account' }}</a>
 @endif

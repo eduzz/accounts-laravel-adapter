@@ -12,8 +12,8 @@ class LaravelEduzzAccountController extends BaseController
     public function __invoke(Request $request, $token)
     {
         $url = app()->environment('local')
-            ? config('eduzz-account.production.api.url')
-            : config('eduzz-account.testing.api.url')
+            ? config('eduzz-account.productionApiUrl')
+            : config('eduzz-account.testingApiUrl')
 
         $request = Http::asJson()->post($url, [
             'partner' => config('eduzz-account.id'),
@@ -27,16 +27,16 @@ class LaravelEduzzAccountController extends BaseController
          * Check if the response is valid
          */
         if (isset($response?->user)) {
-            $user = User::where(config('eduzz-account.table.column'), $response->user->eduzzIds[0])->first();
+            $user = User::where(config('eduzz-account.tableColumn'), $response->user->eduzzIds[0])->first();
 
             if (! $user) {
                 $user = User::create([
                     'name' => $response->user->name,
                     'email' => $response->user->email,
-                    config('eduzz-account.table.column') => $response->user->eduzzIds[0],
+                    config('eduzz-account.tableColumn') => $response->user->eduzzIds[0],
                 ]);
 
-                if (config('eduzz-account.has_teams')) {
+                if (config('eduzz-account.hasTeams')) {
                     $user->ownedTeams()->save(Team::forceCreate([
                         'user_id' => $user->id,
                         'name' => __('Time de ').explode(' ', $user->name, 2)[0],
