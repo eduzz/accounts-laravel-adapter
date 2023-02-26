@@ -41,6 +41,8 @@ Na sua view do blade, use:
 <x-eduzz-account-login-button>Login com Eduzz Account</x-eduzz-account-login-button>
 ```
 
+![Captura de Tela de Login](https://i.imgur.com/ktLd6rk.jpeg)
+
 ## Testando
 
 ```bash
