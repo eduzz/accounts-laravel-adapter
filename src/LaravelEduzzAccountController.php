@@ -12,8 +12,8 @@ class LaravelEduzzAccountController extends BaseController
     public function __invoke(Request $request, $token)
     {
         $url = app()->environment('local')
-            ? config('eduzz-account.productionApiUrl')
-            : config('eduzz-account.testingApiUrl');
+            ? config('eduzz-account.testingApiUrl')
+            : config('eduzz-account.productionApiUrl');
 
         $request = Http::asJson()->post($url, [
             'partner' => config('eduzz-account.id'),
@@ -37,7 +37,7 @@ class LaravelEduzzAccountController extends BaseController
                 ]);
 
                 if (config('eduzz-account.hasTeams')) {
-                    $user->ownedTeams()->save(Team::forceCreate([
+                    $user->ownedTeams()->save(\App\Models\Team::forceCreate([
                         'user_id' => $user->id,
                         'name' => __('Time de ').explode(' ', $user->name, 2)[0],
                         'personal_team' => true,
@@ -47,9 +47,9 @@ class LaravelEduzzAccountController extends BaseController
 
             session()->flush();
 
-            auth()->loginUsingId($user->id);
+            auth()->login($user);
 
-            return redirect(config('eduzz-account.redirect_to'));
+            return redirect(url(config('eduzz-account.redirect_to')));
         }
     }
 }
