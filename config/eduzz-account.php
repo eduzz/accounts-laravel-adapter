@@ -10,7 +10,7 @@ return [
     /**
      * Url to get back the results of the login attempt.
      */
-    'callbackUrl' => env('EDUZZ_ACCOUNT_CALLBACK_URL', '/eduzzlabs/callback/{token}'),
+    'callbackUrl' => env('EDUZZ_ACCOUNT_CALLBACK_URL', '/eduzzlabs/callback/'),
 
     /**
      * Eduzz credentials of this app.
@@ -21,7 +21,7 @@ return [
     /**
      * Url to redirect the user after the login.
      */
-    'redirect_to' => '/',
+    'redirect_to' => '/login',
 
     /**
      * The column name to store the Eduzz Account ID.
