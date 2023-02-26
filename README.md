@@ -37,7 +37,7 @@ php artisan vendor:publish --tag="eduzz-account-views"
 ## Uso
 Na sua view do blade, use:
 
-```php
+```blade
 <x-eduzz-account-login-button>Login com Eduzz Account</x-eduzz-account-login-button>
 ```
 
