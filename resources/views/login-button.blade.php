@@ -10,7 +10,8 @@
                     @if(app()->environment('local')) env: 'homolog' @endif
                 })
                 .subscribe((data) => {
-                    window.location.href = "/eduzz/validate/" + data + "?{!! http_build_query($_GET) !!}"
+                    console.log('Fazendo login com Eduzz Account...');
+                    window.location.href = "{{ config('eduzz-account.callbackUrl') }}" + data + "?{!! http_build_query($_GET) !!}";
                 });
         }
     </script>
