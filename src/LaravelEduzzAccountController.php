@@ -9,10 +9,15 @@ use Illuminate\Routing\Controller as BaseController;
 class LaravelEduzzAccountController extends BaseController
 {
     public $user;
+
     public $userByEduzzId;
+
     public $userByEmail;
+
     public $eduzzUser;
+
     public $tableColumn;
+
     public $response;
 
     public function __construct()
@@ -22,7 +27,7 @@ class LaravelEduzzAccountController extends BaseController
 
     public function processRequest($token)
     {
-         $this->callEduzzAccountApi($token);
+        $this->callEduzzAccountApi($token);
 
         $this->setUser();
 
@@ -42,7 +47,7 @@ class LaravelEduzzAccountController extends BaseController
         } else {
             $this->userByEmail = User::where('email', $this->eduzzUser->email)->first();
 
-            if ($this->userByEmail){
+            if ($this->userByEmail) {
                 $this->user = $this->userByEmail;
                 $this->user->{$this->tableColumn} = $this->eduzzUser->eduzzIds[0];
                 $this->user->save();
@@ -72,7 +77,7 @@ class LaravelEduzzAccountController extends BaseController
 
         $this->eduzzUser = $response?->user;
 
-        if(! $this->eduzzUser){
+        if (! $this->eduzzUser) {
             abort(403, 'Eduzz user not found.');
         }
 
@@ -87,10 +92,10 @@ class LaravelEduzzAccountController extends BaseController
     public function createUser()
     {
         $this->user = User::create([
-                'name' => $this->eduzzUser->name,
-                'email' => $this->eduzzUser->email,
-                $this->tableColumn => $this->eduzzUser->eduzzIds[0],
-            ]);
+            'name' => $this->eduzzUser->name,
+            'email' => $this->eduzzUser->email,
+            $this->tableColumn => $this->eduzzUser->eduzzIds[0],
+        ]);
 
         if (config('eduzz-account.hasTeams')) {
             $this->user->ownedTeams()->save(\App\Models\Team::forceCreate([
