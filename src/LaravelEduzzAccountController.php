@@ -22,35 +22,40 @@ class LaravelEduzzAccountController extends BaseController
         ]);
 
         $response = json_decode($request->getBody()->getContents());
+        $tableColumn = config('eduzz-account.tableColumn');
 
         /*
          * Check if the response is valid
          */
         if (isset($response?->user)) {
-            $eduzzUser = User::where(config('eduzz-account.tableColumn'), $response->user->eduzzIds[0])->first();
-            $tableColumn = config('eduzz-account.tableColumn');
+            $userByEduzzId = User::where(config('eduzz-account.tableColumn'), $response->user->eduzzIds[0])->first();
+            $userByEmail = User::where('email', $response->user->email)->first();
 
-            if (! $eduzzUser) {
-                $eduzzUser = User::create([
+            if($userByEduzzId){
+                $user = $userByEduzzId;
+            }
+
+            if (! $userByEduzzId && ! $userByEmail) {
+                $user = User::create([
                     'name' => $response->user->name,
                     'email' => $response->user->email,
                     $tableColumn => $response->user->eduzzIds[0],
                 ]);
 
                 if (config('eduzz-account.hasTeams')) {
-                    $eduzzUser->ownedTeams()->save(\App\Models\Team::forceCreate([
-                        'user_id' => $eduzzUser->id,
-                        'name' => __('Time de ').explode(' ', $eduzzUser->name, 2)[0],
+                    $user->ownedTeams()->save(\App\Models\Team::forceCreate([
+                        'user_id' => $user->id,
+                        'name' => __('Time de ').explode(' ', $user->name, 2)[0],
                         'personal_team' => true,
                     ]));
                 }
-            } else {
-                $user = User::where('email', $response->user->email)->first();
+            }
 
-                if ($user) {
-                    $user->{$tableColumn} = $response->user->eduzzIds[0];
-                    $user->save();
-                }
+            if ($userByEmail && ! $userByEduzzId) {
+                $userByEmail->{$tableColumn} = $response->user->eduzzIds[0];
+                $userByEmail->save();
+
+                $user = $userByEmail;
             }
 
             session()->flush();
