@@ -4,65 +4,100 @@ namespace EduzzLabs\LaravelEduzzAccount;
 
 use App\Models\User;
 use Http;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class LaravelEduzzAccountController extends BaseController
 {
-    public function __invoke(Request $request, $token)
-    {
-        $url = app()->environment('local')
-            ? config('eduzz-account.testingApiUrl')
-            : config('eduzz-account.productionApiUrl');
+    public $user;
+    public $userByEduzzId;
+    public $userByEmail;
+    public $eduzzUser;
+    public $tableColumn;
+    public $response;
 
-        $request = Http::asJson()->post($url, [
+    public function __construct()
+    {
+        $this->tableColumn = config('eduzz-account.tableColumn');
+    }
+
+    public function processRequest($token)
+    {
+         $this->callEduzzAccountApi($token);
+
+        $this->setUser();
+
+        $this->loginUser();
+
+        return redirect(url(config('eduzz-account.redirect_to')));
+    }
+
+    public function setUser()
+    {
+        $this->userByEduzzId = User::where($this->tableColumn, $this->eduzzUser->eduzzIds[0])->first();
+
+        if ($this->userByEduzzId) {
+            $this->user = $this->userByEduzzId;
+
+            return;
+        } else {
+            $this->userByEmail = User::where('email', $this->eduzzUser->email)->first();
+
+            if ($this->userByEmail){
+                $this->user = $this->userByEmail;
+                $this->user->{$this->tableColumn} = $this->eduzzUser->eduzzIds[0];
+                $this->user->save();
+
+                return;
+            }
+        }
+
+        $this->createUser();
+    }
+
+    public function loginUser()
+    {
+        session()->flush();
+        auth()->login($this->user);
+    }
+
+    public function callEduzzAccountApi($token)
+    {
+        $request = Http::asJson()->post($this->getApiUrl(), [
             'partner' => config('eduzz-account.id'),
             'secret' => config('eduzz-account.secret'),
             'token' => $token,
         ]);
 
         $response = json_decode($request->getBody()->getContents());
-        $tableColumn = config('eduzz-account.tableColumn');
 
-        /*
-         * Check if the response is valid
-         */
-        if (isset($response?->user)) {
-            $userByEduzzId = User::where(config('eduzz-account.tableColumn'), $response->user->eduzzIds[0])->first();
-            $userByEmail = User::where('email', $response->user->email)->first();
+        $this->eduzzUser = $response?->user;
 
-            if ($userByEduzzId) {
-                $user = $userByEduzzId;
-            }
+        if(! $this->eduzzUser){
+            abort(403, 'Eduzz user not found.');
+        }
 
-            if (! $userByEduzzId && ! $userByEmail) {
-                $user = User::create([
-                    'name' => $response->user->name,
-                    'email' => $response->user->email,
-                    $tableColumn => $response->user->eduzzIds[0],
-                ]);
+        return $response;
+    }
 
-                if (config('eduzz-account.hasTeams')) {
-                    $user->ownedTeams()->save(\App\Models\Team::forceCreate([
-                        'user_id' => $user->id,
-                        'name' => __('Time de ').explode(' ', $user->name, 2)[0],
-                        'personal_team' => true,
-                    ]));
-                }
-            }
+    public function getApiUrl()
+    {
+        return config('eduzz-account.'.(app()->environment('production') ? 'production' : 'testing').'ApiUrl');
+    }
 
-            if ($userByEmail && ! $userByEduzzId) {
-                $userByEmail->{$tableColumn} = $response->user->eduzzIds[0];
-                $userByEmail->save();
+    public function createUser()
+    {
+        $this->user = User::create([
+                'name' => $this->eduzzUser->name,
+                'email' => $this->eduzzUser->email,
+                $this->tableColumn => $this->eduzzUser->eduzzIds[0],
+            ]);
 
-                $user = $userByEmail;
-            }
-
-            session()->flush();
-
-            auth()->login($user);
-
-            return redirect(url(config('eduzz-account.redirect_to')));
+        if (config('eduzz-account.hasTeams')) {
+            $this->user->ownedTeams()->save(\App\Models\Team::forceCreate([
+                'user_id' => $this->user->id,
+                'name' => __('Time de ').explode(' ', $this->user->name, 2)[0],
+                'personal_team' => true,
+            ]));
         }
     }
 }
