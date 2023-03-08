@@ -27,23 +27,32 @@ class LaravelEduzzAccountController extends BaseController
          * Check if the response is valid
          */
         if (isset($response?->user)) {
-            $user = User::where(config('eduzz-account.tableColumn'), $response->user->eduzzIds[0])->first();
+            $eduzzUser = User::where(config('eduzz-account.tableColumn'), $response->user->eduzzIds[0])->first();
+            $tableColumn = config('eduzz-account.tableColumn');
 
-            if (! $user) {
-                $user = User::create([
+            if (! $eduzzUser) {
+                $eduzzUser = User::create([
                     'name' => $response->user->name,
                     'email' => $response->user->email,
-                    config('eduzz-account.tableColumn') => $response->user->eduzzIds[0],
+                    $tableColumn => $response->user->eduzzIds[0],
                 ]);
 
                 if (config('eduzz-account.hasTeams')) {
-                    $user->ownedTeams()->save(\App\Models\Team::forceCreate([
-                        'user_id' => $user->id,
-                        'name' => __('Time de ').explode(' ', $user->name, 2)[0],
+                    $eduzzUser->ownedTeams()->save(\App\Models\Team::forceCreate([
+                        'user_id' => $eduzzUser->id,
+                        'name' => __('Time de ').explode(' ', $eduzzUser->name, 2)[0],
                         'personal_team' => true,
                     ]));
                 }
+            } else {
+                $user = User::where('email', $response->user->email)->first();
+
+                if ($user) {
+                    $user->{$tableColumn} = $response->user->eduzzIds[0];
+                    $user->save();
+                }
             }
+
 
             session()->flush();
 
