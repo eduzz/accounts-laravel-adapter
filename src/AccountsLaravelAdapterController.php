@@ -48,6 +48,8 @@ class AccountsLaravelAdapterController extends BaseController
             $this->userByEmail = User::where('email', $this->eduzzUser->email)->first();
 
             if ($this->userByEmail) {
+                // abort_if(! $this->eduzzUser->isEmailValidated, 402, 'Verifique/confirme seu email na Eduzz.')
+
                 $this->user = $this->userByEmail;
                 $this->user->{$this->tableColumn} = $this->eduzzUser->eduzzIds[0];
                 $this->user->save();

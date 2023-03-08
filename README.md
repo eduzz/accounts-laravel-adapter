@@ -12,14 +12,14 @@ composer require eduzz/accounts-laravel-adapter
 Você deve publicar e executar as migrations com:
 
 ```bash
-php artisan vendor:publish --tag="accounts-laravel-adapter-migrations"
+php artisan vendor:publish --tag="adapter-migrations"
 php artisan migrate
 ```
 
 Você deve publicar as configurações com:
 
 ```bash
-php artisan vendor:publish --tag="accounts-laravel-adapter-config"
+php artisan vendor:publish --tag="adapter-config"
 ```
 
 Este é o conteúdo do arquivo de configuração publicado:
@@ -95,7 +95,7 @@ Também importe os estilos css do botão em app.css:
 Opcionalmente, você pode publicar as view com:
 
 ```bash
-php artisan vendor:publish --tag="accounts-laravel-adapter-views"
+php artisan vendor:publish --tag="adapter-views"
 ```
 
 ## Uso
