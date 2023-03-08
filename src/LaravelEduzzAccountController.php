@@ -53,7 +53,6 @@ class LaravelEduzzAccountController extends BaseController
                 }
             }
 
-
             session()->flush();
 
             auth()->login($user);
