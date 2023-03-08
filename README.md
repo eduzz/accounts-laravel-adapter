@@ -61,12 +61,12 @@ return [
     /**
      * The app logo to show in the login page.
      */
-    'logo' => 'https://i.imgur.com/d8a3ucN.jpeg',
+    'logo' => '',
 
     /**
      * The background image to show in the login page.
      */
-    'backgroundImage' => 'https://bellamais.correiodopovo.com.br/image/policy:1.401858:1582807039/Quem-precisa-de-etica-no-marketing-digital.jpg?f=2x1&$p$f=cd658fa&w=2400&$w=d2ad2f2',
+    'backgroundImage' => '',
 
     /**
      * Define the button color.
