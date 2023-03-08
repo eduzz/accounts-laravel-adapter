@@ -3,7 +3,7 @@ Módulo para utilizar o Eduzz Account com uma aplicação Laravel que utiliza o 
 
 ## Instalação
 
-Você pode instalar o pacote via composer:
+Instale o pacote via composer:
 
 ```bash
 composer require eduzz/accounts-laravel-adapter
