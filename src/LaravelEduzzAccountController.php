@@ -31,7 +31,7 @@ class LaravelEduzzAccountController extends BaseController
             $userByEduzzId = User::where(config('eduzz-account.tableColumn'), $response->user->eduzzIds[0])->first();
             $userByEmail = User::where('email', $response->user->email)->first();
 
-            if($userByEduzzId){
+            if ($userByEduzzId) {
                 $user = $userByEduzzId;
             }
 
