@@ -162,7 +162,7 @@ $folderName = basename($currentDirectory);
 
 $packageName = ask('Package name', $folderName);
 $packageSlug = slugify($packageName);
-$packageSlugWithoutPrefix = remove_prefix('laravel-', $packageSlug);
+$packageSlugWithoutPrefix = $packageSlug;
 
 $className = title_case($packageName);
 $className = ask('Class name', $className);
