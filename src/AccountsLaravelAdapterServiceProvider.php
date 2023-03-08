@@ -16,7 +16,7 @@ class AccountsLaravelAdapterServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('accounts-laravel-adapter')
-            ->hasConfigFile()
+            ->hasConfigFile('accounts-laravel-adapter')
             ->hasViews()
             ->hasViewComponent('eduzz-account', Components\LoginButton::class)
             ->hasRoute('web')
