@@ -2,6 +2,10 @@
 
 All notable changes to `:package_name` will be documented in this file.
 
+## v1.34 - 2023-03-08
+
+update dependencies
+
 ## v1.32 - 2023-03-08
 
 update namespace config
