@@ -5,12 +5,12 @@ return [
     /**
      * Enable/disable the Eduzz Account button.
      */
-    'enabled' => env('EDUZZ_ACCOUNT_ENABLED', true),
+    'enabled' => env('EDUZZ_ACCOUNTS_ENABLED', true),
 
     /**
      * Url to get back the results of the login attempt.
      */
-    'callbackUrl' => env('EDUZZ_ACCOUNT_CALLBACK_URL', '/eduzzlabs/callback/'),
+    'callbackUrl' => env('EDUZZ_ACCOUNTS_CALLBACK_URL', '/eduzz/callback/'),
 
     /**
      * Eduzz credentials of this app.
@@ -51,11 +51,11 @@ return [
     /**
      * Set the Eduzz Account Controller class.
      */
-    'routeController' => \EduzzLabs\LaravelEduzzAccount\LaravelEduzzAccountController::class,
+    'routeController' => \Eduzz\AccountsLaravelAdapter\AccountsLaravelAdapterController::class,
 
     /**
      * The Eduzz Account url API.
      */
-    'productionApiUrl' => env('EDUZZ_ACCOUNT_API_URL'),
-    'testingApiUrl' => env('EDUZZ_ACCOUNT_TESTING_API_URL'),
+    'productionApiUrl' => env('EDUZZ_ACCOUNTS_API_URL'),
+    'testingApiUrl' => env('EDUZZ_ACCOUNTS_TESTING_API_URL'),
 ];

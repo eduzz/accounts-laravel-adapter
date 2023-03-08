@@ -1,12 +1,12 @@
 <?php
 
-namespace EduzzLabs\LaravelEduzzAccount;
+namespace Eduzz\AccountsLaravelAdapter;
 
 use App\Models\User;
 use Http;
 use Illuminate\Routing\Controller as BaseController;
 
-class LaravelEduzzAccountController extends BaseController
+class AccountsLaravelAdapterController extends BaseController
 {
     public $user;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace EduzzLabs\LaravelEduzzAccount;
+namespace Eduzz\AccountsLaravelAdapter;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class LaravelEduzzAccountServiceProvider extends PackageServiceProvider
+class AccountsLaravelAdapterServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -15,7 +15,7 @@ class LaravelEduzzAccountServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-eduzz-account')
+            ->name('accounts-laravel-adapter')
             ->hasConfigFile()
             ->hasViews()
             ->hasViewComponent('eduzz-account', Components\LoginButton::class)

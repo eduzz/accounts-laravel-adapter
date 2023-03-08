@@ -1,17 +1,17 @@
 {
-    "name": "eduzzlabs/laravel-eduzz-account",
-    "description": "Pacote de integração do Laravel com o Eduzz Account.",
+    "name": "eduzz/accounts-laravel-adapter",
+    "description": "Pacote de integração do Eduzz Account com o Laravel Jetstream.",
     "keywords": [
         "eduzz",
         "laravel",
-        "laravel-eduzz-account"
+        "accounts-laravel-adapter"
     ],
-    "homepage": "https://github.com/eduzzlabs/laravel-eduzz-account",
+    "homepage": "https://github.com/eduzz/accounts-laravel-adapter",
     "license": "MIT",
     "authors": [
         {
-            "name": "Dan Palmieri",
-            "email": "contato@danpalmieri.com",
+            "name": "Daniel Palmieri",
+            "email": "daniel.palmieri@eduzz.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "EduzzLabs\\LaravelEduzzAccount\\": "src",
-            "EduzzLabs\\LaravelEduzzAccount\\Database\\Factories\\": "database/factories"
+            "Eduzz\\AccountsLaravelAdapter\\": "src",
+            "Eduzz\\AccountsLaravelAdapter\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EduzzLabs\\LaravelEduzzAccount\\Tests\\": "tests"
+            "Eduzz\\AccountsLaravelAdapter\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -61,10 +61,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "EduzzLabs\\LaravelEduzzAccount\\LaravelEduzzAccountServiceProvider"
+                "Eduzz\\AccountsLaravelAdapter\\AccountsLaravelAdapterServiceProvider"
             ],
             "aliases": {
-                "LaravelEduzzAccount": "EduzzLabs\\LaravelEduzzAccount\\Facades\\LaravelEduzzAccount"
+                "AccountsLaravelAdapter": "Eduzz\\AccountsLaravelAdapter\\Facades\\AccountsLaravelAdapter"
             }
         }
     },

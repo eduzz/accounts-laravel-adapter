@@ -1,6 +1,6 @@
 <?php
 
-namespace EduzzLabs\LaravelEduzzAccount\Components;
+namespace Eduzz\AccountsLaravelAdapter\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;

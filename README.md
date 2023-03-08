@@ -1,4 +1,4 @@
-# Laravel Eduzz Account
+# Accounts Laravel Adapter
 Módulo para utilizar o Eduzz Account com uma aplicação Laravel que utiliza o Jetstream.
 
 ## Instalação
@@ -6,20 +6,20 @@ Módulo para utilizar o Eduzz Account com uma aplicação Laravel que utiliza o 
 Você pode instalar o pacote via composer:
 
 ```bash
-composer require eduzzlabs/laravel-eduzz-account
+composer require eduzz/accounts-laravel-adapter
 ```
 
 Você deve publicar e executar as migrations com:
 
 ```bash
-php artisan vendor:publish --tag="eduzz-account-migrations"
+php artisan vendor:publish --tag="accounts-laravel-adapter-migrations"
 php artisan migrate
 ```
 
 Você deve publicar as configurações com:
 
 ```bash
-php artisan vendor:publish --tag="eduzz-account-config"
+php artisan vendor:publish --tag="accounts-laravel-adapter-config"
 ```
 
 Este é o conteúdo do arquivo de configuração publicado:
@@ -30,12 +30,12 @@ return [
     /**
      * Enable/disable the Eduzz Account button.
      */
-    'enabled' => env('EDUZZ_ACCOUNT_ENABLED', true),
+    'enabled' => env('EDUZZ_ACCOUNTS_ENABLED', true),
 
     /**
      * Url to get back the results of the login attempt.
      */
-    'callbackUrl' => env('EDUZZ_ACCOUNT_CALLBACK_URL', '/eduzzlabs/callback/'),
+    'callbackUrl' => env('EDUZZ_ACCOUNTS_CALLBACK_URL', '/eduzz/callback/'),
 
     /**
      * Eduzz credentials of this app.
@@ -76,7 +76,7 @@ return [
     /**
      * Set the Eduzz Account Controller class.
      */
-    'routeController' => \EduzzLabs\LaravelEduzzAccount\LaravelEduzzAccountController::class,
+    'routeController' => \Eduzz\AccountsLaravelAdapter\AccountsLaravelAdapterController::class,
 
     /**
      * The Eduzz Account url API.
@@ -89,13 +89,13 @@ return [
 Também importe os estilos css do botão em app.css:
 
 ```css
-@import "/vendor/eduzzlabs/laravel-eduzz-account/resources/dist/button.css";
+@import "/vendor/eduzz/accounts-laravel-adapter/resources/dist/button.css";
 ```
 
 Opcionalmente, você pode publicar as view com:
 
 ```bash
-php artisan vendor:publish --tag="eduzz-account-views"
+php artisan vendor:publish --tag="accounts-laravel-adapter-views"
 ```
 
 ## Uso
