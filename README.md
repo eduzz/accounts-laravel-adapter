@@ -9,17 +9,17 @@ Instale o pacote via composer:
 composer require eduzz/accounts-laravel-adapter
 ```
 
+Você deve publicar as configurações com:
+
+```bash
+php artisan vendor:publish --tag="adapter-config"
+```
+
 Você deve publicar e executar as migrations com:
 
 ```bash
 php artisan vendor:publish --tag="adapter-migrations"
 php artisan migrate
-```
-
-Você deve publicar as configurações com:
-
-```bash
-php artisan vendor:publish --tag="adapter-config"
 ```
 
 Este é o conteúdo do arquivo de configuração publicado:
